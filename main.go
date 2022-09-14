@@ -12,16 +12,5 @@ func main() {
 		r.GET("video", api.GetVideoInfo)
 		r.GET("download", api.DownloadVideo)
 	}
-	route.Run()
-	// dy, err := api.GetVideoApi(douyinUrl)
-	// if err != nil {
-	// 	fmt.Println(err)
-	// 	return
-	// }
-	// filename, err := api.DownloadVideo(dy)
-	// if err != nil {
-	// 	fmt.Println(err)
-	// 	return
-	// }
-	// fmt.Println(filename)
+	route.Run(":8097")
 }
