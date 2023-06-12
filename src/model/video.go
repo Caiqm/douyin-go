@@ -1,21 +1,21 @@
 package model
 
 type DouYinVideo struct {
-	StatusCode int `json:"status_code"`
-	ItemList []ItemLists `json:"item_list"`
+	StatusCode int         `json:"status_code"`
+	ItemList   AwemeDetail `json:"aweme_detail"`
 }
 
-type ItemLists struct {
+type AwemeDetail struct {
 	AwemeId string `json:"aweme_id"`
-	Desc string `json:"desc"`
-	Music Music `json:"music"`
-	Video Video `json:"video"`
+	Desc    string `json:"desc"`
+	Music   Music  `json:"music"`
+	Video   Video  `json:"video"`
 }
 
 type Music struct {
-	Id int64 `json:"id"`
+	Id      int64        `json:"id"`
 	PlayUrl MusicPlayUrl `json:"play_url"`
-	CoverHd CoverHdList `json:"cover_hd"`
+	CoverHd CoverHdList  `json:"cover_hd"`
 }
 
 type MusicPlayUrl struct {
@@ -27,10 +27,10 @@ type CoverHdList struct {
 }
 
 type Video struct {
-	PlayAddr VideoPlayUrl `json:"play_addr"`
-	Cover CoverUriList `json:"cover"`
+	PlayAddr     VideoPlayUrl     `json:"play_addr"`
+	Cover        CoverUriList     `json:"cover"`
 	DynamicCover DynamicCoverList `json:"dynamic_cover"`
-	OriginCover OriginCoverList `json:"origin_cover"`
+	OriginCover  OriginCoverList  `json:"origin_cover"`
 }
 
 type VideoPlayUrl struct {
