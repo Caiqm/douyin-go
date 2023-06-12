@@ -13,7 +13,7 @@ import (
 )
 
 // 下载视频文件
-func DownloadVideo(videoPlayUrl string) (path string, err error) {
+func DownloadVideo(videoPlayUrl, savePath string) (path string, err error) {
 	// 视频播放链接
 	// videoPlayUrl := dyStruct.ItemList[0].Video.PlayAddr.UrlList[0]
 	playUrl := strings.Replace(videoPlayUrl, "playwm", "play", -1)
@@ -37,7 +37,12 @@ func DownloadVideo(videoPlayUrl string) (path string, err error) {
 	randNum := rand.Intn(9999)
 	tmpName := timeNano + int64(randNum)
 	filename := fmt.Sprintf("%s_%d.%s", "vid", tmpName, "mp4")
-	path = filepath.Join(dir, "src", "video", filename)
+	// 文件路径
+	if len(savePath) > 0 {
+		path = filepath.Join(savePath, filename)
+	} else {
+		path = filepath.Join(dir, "src", "video", filename)
+	}
 	err = ioutil.WriteFile(path, body, 0777)
 	return
 }

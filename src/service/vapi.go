@@ -13,7 +13,6 @@ import (
 // 获取视频信息
 func GetVideoApi(videoUrl string) (dyStruct model.DouYinVideo, err error) {
 	videoId, err := GetVideoId(videoUrl)
-	fmt.Println(videoId)
 	if err != nil {
 		return
 	}
@@ -42,7 +41,7 @@ func GetVideoApi(videoUrl string) (dyStruct model.DouYinVideo, err error) {
 	}
 	defer response.Body.Close()
 	body, _ := ioutil.ReadAll(response.Body)
-	fmt.Println(string(body))
+	// fmt.Println(string(body))
 	_ = json.Unmarshal(body, &dyStruct)
 	return
 }

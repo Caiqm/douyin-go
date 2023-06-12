@@ -77,7 +77,7 @@ func GetXBogus(videoId string) (XBogusRsp, error) {
 		return xB, errors.New("请求失败")
 	}
 	body, _ := io.ReadAll(response.Body)
-	fmt.Println(string(body))
+	// fmt.Println(string(body))
 	json.Unmarshal(body, &xB)
 	return xB, err
 }

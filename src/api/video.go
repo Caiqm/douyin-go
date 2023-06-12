@@ -13,7 +13,7 @@ func GetVideoInfo(ctx *gin.Context) {
 	if videoLink == "" {
 		ctx.JSON(http.StatusOK, gin.H{
 			"code": 400,
-			"msg": "请输入视频链接",
+			"msg":  "请输入视频链接",
 			"data": gin.H{},
 		})
 		return
@@ -22,7 +22,7 @@ func GetVideoInfo(ctx *gin.Context) {
 	if err != nil {
 		ctx.JSON(http.StatusOK, gin.H{
 			"code": 400,
-			"msg": err.Error(),
+			"msg":  err.Error(),
 			"data": gin.H{},
 		})
 		return
@@ -30,14 +30,14 @@ func GetVideoInfo(ctx *gin.Context) {
 	if dy.StatusCode != 0 {
 		ctx.JSON(http.StatusOK, gin.H{
 			"code": 400,
-			"msg": "请求接口失败",
+			"msg":  "请求接口失败",
 			"data": gin.H{},
 		})
 		return
 	}
 	ctx.JSON(http.StatusOK, gin.H{
 		"code": 0,
-		"msg": "ok",
+		"msg":  "ok",
 		"data": dy.ItemList,
 	})
 }
@@ -48,16 +48,16 @@ func DownloadVideo(ctx *gin.Context) {
 	if videoLink == "" {
 		ctx.JSON(http.StatusOK, gin.H{
 			"code": 400,
-			"msg": "请输入视频链接",
+			"msg":  "请输入视频链接",
 			"data": gin.H{},
 		})
 		return
 	}
-	filename, err := service.DownloadVideo(videoLink)
+	filename, err := service.DownloadVideo(videoLink, "")
 	if err != nil {
 		ctx.JSON(http.StatusOK, gin.H{
 			"code": 400,
-			"msg": err.Error(),
+			"msg":  err.Error(),
 			"data": gin.H{},
 		})
 		return
